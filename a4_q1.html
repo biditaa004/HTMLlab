@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Form</title>
+    <script  type="text/javascript">
+        function displayGreeting() {
+            var name = document.getElementById('name').value;
+            document.getElementById('greeting').innerText = 'Hello, ' + name + '!';
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="event.preventDefault(); displayGreeting();">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="greeting"></div>
+</body>
+</html>

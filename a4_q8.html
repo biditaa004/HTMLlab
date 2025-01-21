@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <script>
+        function convertTemperature() {
+            var temp = parseFloat(document.getElementById('temperature').value);
+            var conversionType = document.getElementById('conversionType').value;
+            var result;
+            if (conversionType === 'CtoF') {
+                result = (temp * 9/5) + 32;
+                document.getElementById('result').innerText = temp + ' °C is ' + result.toFixed(2) + ' °F';
+            } else {
+                result = (temp - 32) * 5/9;
+                document.getElementById('result').innerText = temp + ' °F is ' + result.toFixed(2) + ' °C';
+            }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="event.preventDefault(); convertTemperature();">
+        <label for="temperature">Temperature:</label>
+        <input type="number" id="temperature" name="temperature">
+        <label for="conversionType">Convert to:</label>
+        <select id="conversionType" name="conversionType">
+            <option value="CtoF">Celsius to Fahrenheit</option>
+            <option value="FtoC">Fahrenheit to Celsius</option>
+        </select>
+        <button type="submit">Convert</button>
+    </form>
+    <div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Case Converter</title>
+    <script>
+        function convertCase() {
+            var text = document.getElementById('textInput').value;
+            var caseOption = document.querySelector('input[name="case"]:checked').value;
+            var result = caseOption === 'uppercase' ? text.toUpperCase() : text.toLowerCase();
+            document.getElementById('convertedText').innerHTML = result;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="textInput" oninput="convertCase()" placeholder="Enter text"><br>
+    <label><input type="radio" name="case" value="uppercase" checked> Uppercase</label>
+    <label><input type="radio" name="case" value="lowercase"> Lowercase</label>
+    <p id="convertedText"></p>
+</body>
+</html>

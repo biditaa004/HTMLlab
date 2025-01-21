@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enable/Disable Button</title>
+    <script>
+        function toggleButton() {
+            var inputText = document.getElementById('inputField').value;
+            var button = document.getElementById('actionButton');
+            button.disabled = inputText.trim() === '';
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="inputField" oninput="toggleButton()" placeholder="Type something">
+    <button id="actionButton" disabled>Click Me</button>
+</body>
+</html>

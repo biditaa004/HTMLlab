@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyword Highlighting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      font-size: 16px;
+    }
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Search and Highlight Keyword</h2>
+    <input type="text" id="keyword" placeholder="Enter keyword to highlight" oninput="highlightKeyword()">
+    <div>
+      <p>This is a paragraph that contains the word JavaScript.</p>
+      <p>JavaScript is a versatile language used for web development.</p>
+      <p>Many developers enjoy learning and coding with JavaScript.</p>
+      <p>HTML and CSS are important for web development too.</p>
+    </div>
+  </div>
+
+  <script>
+    function highlightKeyword() {
+      const keyword = document.getElementById('keyword').value.toLowerCase();
+      const paragraphs = document.querySelectorAll('p');
+
+      paragraphs.forEach(paragraph => {
+        // Remove any previous highlights
+        paragraph.classList.remove('highlight');
+        
+        if (paragraph.textContent.toLowerCase().includes(keyword) && keyword !== '') {
+          paragraph.classList.add('highlight');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

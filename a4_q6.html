@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Toggle</title>
+    <script>
+        function toggleImage() {
+            var img = document.getElementById('myImage');
+            img.style.display = img.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <h1>Toggle Image</h1>
+    <button onclick="toggleImage()">Toggle Image</button>
+    <img id="myImage" src="image.png" alt="Sample Image">
+</body>
+</html>

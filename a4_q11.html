@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Age Calculator</h1>
+
+    <label for="dob">Enter your Date of Birth:</label>
+    <input type="date" id="dob" required>
+    
+    <button onclick="calculateAge()">Calculate Age</button>
+
+    <div id="ageResult" class="result"></div>
+
+    <script>
+        function calculateAge() {
+            const dob = document.getElementById('dob').value;
+            if (!dob) {
+                alert("Please select a date of birth");
+                return;
+            }
+
+            const birthDate = new Date(dob);
+            const currentDate = new Date();
+
+            let ageYears = currentDate.getFullYear() - birthDate.getFullYear();
+            let ageMonths = currentDate.getMonth() - birthDate.getMonth();
+            let ageDays = currentDate.getDate() - birthDate.getDate();
+
+            if (ageMonths < 0) {
+                ageYears--;
+                ageMonths += 12;
+            }
+
+            if (ageDays < 0) {
+                ageMonths--;
+                const lastMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 0);
+                ageDays += lastMonth.getDate();
+            }
+
+            document.getElementById('ageResult').textContent = `Your age is ${ageYears} years, ${ageMonths} months, and ${ageDays} days.`;
+        }
+    </script>
+
+</body>
+</html>

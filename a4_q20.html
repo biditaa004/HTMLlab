@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz</title>
+    <script>
+        function calculateScore() {
+            var score = 0;
+            var q1 = document.querySelector('input[name="q1"]:checked');
+            var q2 = document.querySelector('input[name="q2"]:checked');
+            
+            if (q1 && q1.value === 'a') score++;
+            if (q2 && q2.value === 'b') score++;
+            
+            document.getElementById('score').innerHTML = 'Your score: ' + score;
+        }
+    </script>
+</head>
+<body>
+    <h3>Question 1: What is 2 + 2?</h3>
+    <input type="radio" name="q1" value="a"> 4<br>
+    <input type="radio" name="q1" value="b"> 5<br><br>
+
+    <h3>Question 2: What is the capital of France?</h3>
+    <input type="radio" name="q2" value="a"> Rome<br>
+    <input type="radio" name="q2" value="b"> Paris<br><br>
+
+    <button onclick="calculateScore()">Submit</button>
+    <div id="score"></div>
+</body>
+</html>

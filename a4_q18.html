@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <script>
+        function addTask() {
+            var task = document.getElementById('taskInput').value;
+            if (task) {
+                var li = document.createElement('li');
+                li.innerHTML = task + ' <button onclick="removeTask(this)">Remove</button> <button onclick="toggleComplete(this)">Complete</button>';
+                document.getElementById('taskList').appendChild(li);
+                document.getElementById('taskInput').value = '';
+            }
+        }
+
+        function removeTask(button) {
+            var li = button.parentElement;
+            document.getElementById('taskList').removeChild(li);
+        }
+
+        function toggleComplete(button) {
+            var li = button.parentElement;
+            li.classList.toggle('completed');
+        }
+    </script>
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="taskInput" placeholder="New Task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+</body>
+</html>

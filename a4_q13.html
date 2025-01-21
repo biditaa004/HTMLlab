@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Style Changer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        select, h2 {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        h2 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Change Font Style</h1>
+
+    <label for="fontSelector">Select a Font Style:</label>
+    <select id="fontSelector" onchange="changeFont()">
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="Courier New, monospace">Courier New</option>
+        <option value="Georgia, serif">Georgia</option>
+        <option value="Times New Roman, Times, serif">Times New Roman</option>
+        <option value="Verdana, Geneva, sans-serif">Verdana</option>
+    </select>
+
+    <h2 id="text">This is some sample text!</h2>
+
+    <script>
+        function changeFont() {
+            // Get the selected font style from the dropdown
+            const selectedFont = document.getElementById('fontSelector').value;
+            
+            // Change the font style of the text element
+            document.getElementById('text').style.fontFamily = selectedFont;
+        }
+    </script>
+
+</body>
+</html>

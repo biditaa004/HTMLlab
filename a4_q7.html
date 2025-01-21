@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = '';
+            var messageContainer = document.getElementById('validationMessage');
+            
+            if (!name) {
+                message += 'Name is required.<br>';
+            }
+            if (!email) {
+                message += 'Email is required.<br>';
+            }
+            
+            if (message) {
+                messageContainer.innerHTML = message;
+                messageContainer.style.color = 'red';
+                return false;
+            } else {
+                messageContainer.innerHTML = 'All inputs are correct!';
+                messageContainer.style.color = 'green';
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateForm();">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="validationMessage"></div>
+</body>
+</html>
