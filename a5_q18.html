@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paginated Table</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .pagination {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .pagination button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Paginated Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+    <div class="pagination">
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        const tableBody = document.getElementById('tableBody');
+        const data = [
+            { id: 1, name: 'John Doe', email: 'john@example.com' },
+            { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+            // ... more data
+        ];
+        let currentPage = 1;
+        const rowsPerPage = 5;
+
+        function displayTable(page) {
+            tableBody.innerHTML = '';
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = data.slice(start, end);
+            pageData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${row.id}</td><td>${row.name}</td><td>${row.email}</td>`;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        document.getElementById('prev').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayTable(currentPage);
+            }
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            if (currentPage < Math.ceil(data.length / rowsPerPage)) {
+                currentPage++;
+                displayTable(currentPage);
+            }
+        });
+
+        displayTable(currentPage);
+    </script>
+</body>
+</html>

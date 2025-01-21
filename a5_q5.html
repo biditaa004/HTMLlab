@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Items as Completed</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        .completed {
+            text-decoration: line-through;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click Items to Mark as Completed</h1>
+    <ul id="todoList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <script>
+        document.getElementById('todoList').addEventListener('click', (e) => {
+            if (e.target.tagName === 'LI') {
+                e.target.classList.toggle('completed');
+            }
+        });
+    </script>
+</body>
+</html>

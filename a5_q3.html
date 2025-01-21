@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Hover Effect</title>
+    <style>
+        #hoverButton {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        #hoverButton:hover {
+            background-color: green;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Button Hover Effect</h1>
+    <button id="hoverButton">Hover over me</button>
+
+    <script>
+        const button = document.getElementById('hoverButton');
+        button.addEventListener('mouseenter', () => {
+            button.textContent = 'You hovered over me!';
+        });
+        button.addEventListener('mouseleave', () => {
+            button.textContent = 'Hover over me';
+        });
+    </script>
+</body>
+</html>

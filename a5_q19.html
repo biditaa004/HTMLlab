@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        .gallery {
+            text-align: center;
+            margin: 20px 0;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <div class="gallery">
+        <button id="prev">Previous</button>
+        <img id="image" src="https://via.placeholder.com/600x400" alt="Gallery Image">
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        const images = [
+            'image.png',
+            'picture.jpg'
+            
+        ];
+        let currentImage = 0;
+
+        function updateImage() {
+            document.getElementById('image').src = images[currentImage];
+        }
+
+        document.getElementById('prev').addEventListener('click', () => {
+            currentImage = (currentImage - 1 + images.length) % images.length;
+            updateImage();
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            currentImage = (currentImage + 1) % images.length;
+            updateImage();
+        });
+    </script>
+</body>
+</html>

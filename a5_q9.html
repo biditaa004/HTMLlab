@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapsible FAQ</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        .faq-section {
+            width: 80%;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+        .faq-question {
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .faq-answer {
+            padding: 15px;
+            display: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>FAQ Section</h1>
+    <div class="faq-section">
+        <div class="faq-item">
+            <div class="faq-question">What is Lorem Ipsum?</div>
+            <div class="faq-answer">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Why do we use it?</div>
+            <div class="faq-answer">It is a long established fact that a reader will be distracted by the readable content.</div>
+        </div>
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll('.faq-question');
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

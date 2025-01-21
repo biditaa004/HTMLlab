@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Dynamic Table Generator</h1>
+
+<label for="rows">Number of Rows:</label>
+<input type="number" id="rows" min="1" value="1">
+<br><br>
+
+<label for="cols">Number of Columns:</label>
+<input type="number" id="cols" min="1" value="1">
+<br><br>
+
+<button id="generateTableBtn">Generate Table</button>
+
+<table id="dynamicTable">
+    <thead>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamic rows will be added here -->
+    </tbody>
+</table>
+
+<script>
+// Function to generate a dynamic table based on user input
+document.getElementById('generateTableBtn').onclick = function() {
+    const rows = document.getElementById('rows').value;
+    const cols = document.getElementById('cols').value;
+    
+    // Clear existing table body
+    const tbody = document.getElementById('dynamicTable').getElementsByTagName('tbody')[0];
+    tbody.innerHTML = ''; // Clear previous rows
+
+    // Generate new rows and cells
+    for (let i = 0; i < rows; i++) {
+        const row = tbody.insertRow(); // Create a new row
+        for (let j = 0; j < cols; j++) {
+            const cell = row.insertCell(); // Create a new cell
+            cell.textContent = `Row ${i + 1}, Cell ${j + 1}`; // Set cell content
+        }
+    }
+};
+</script>
+
+</body>
+</html>

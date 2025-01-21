@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Real-time Form Validation</h1>
+    <form id="validationForm">
+        <input type="email" id="email" placeholder="Enter your email">
+        <div id="emailError" class="error"></div>
+        <input type="tel" id="phone" placeholder="Enter your phone number">
+        <div id="phoneError" class="error"></div>
+    </form>
+
+    <script>
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+
+        emailInput.addEventListener('input', () => {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            emailError.textContent = emailPattern.test(emailInput.value) ? '' : 'Invalid email address';
+        });
+
+        phoneInput.addEventListener('input', () => {
+            const phonePattern = /^\d{10}$/;
+            phoneError.textContent = phonePattern.test(phoneInput.value) ? '' : 'Phone number must be 10 digits';
+        });
+    </script>
+</body>
+</html>

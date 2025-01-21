@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Items by Category</title>
+    <style>
+        #item-list {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<select id="category" onchange="filterItems()">
+    <option value="all">All</option>
+    <option value="fruits">Fruits</option>
+    <option value="vegetables">Vegetables</option>
+</select>
+
+<ul id="item-list">
+    <li class="fruits">Apple</li>
+    <li class="fruits">Banana</li>
+    <li class="vegetables">Carrot</li>
+    <li class="vegetables">Broccoli</li>
+</ul>
+
+<script>
+    function filterItems() {
+        const category = document.getElementById('category').value;
+        const items = document.querySelectorAll('#item-list li');
+
+        items.forEach(item => {
+            if (category === 'all' || item.classList.contains(category)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

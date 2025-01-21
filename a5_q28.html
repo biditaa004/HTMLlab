@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Greeting</title>
+</head>
+<body>
+
+<h1 id="greeting"></h1>
+
+<script>
+    const hour = new Date().getHours();
+    const greeting = document.getElementById('greeting');
+
+    if (hour < 12) {
+        greeting.textContent = "Good Morning!";
+    } else if (hour < 18) {
+        greeting.textContent = "Good Afternoon!";
+    } else {
+        greeting.textContent = "Good Evening!";
+    }
+</script>
+
+</body>
+</html>

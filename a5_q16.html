@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        textarea {
+            display: block;
+            width: 80%;
+            height: 100px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .counter {
+            text-align: center;
+            font-size: 16px;
+        }
+        .warning {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Character Counter</h1>
+    <textarea id="textArea"></textarea>
+    <div id="charCount" class="counter">Characters: 0</div>
+
+    <script>
+        const textArea = document.getElementById('textArea');
+        const charCount = document.getElementById('charCount');
+        const maxLength = 100;
+
+        textArea.addEventListener('input', () => {
+            const length = textArea.value.length;
+            charCount.textContent = `Characters: ${length}`;
+            if (length > maxLength * 0.9) {
+                charCount.classList.add('warning');
+            } else {
+                charCount.classList.remove('warning');
+            }
+        });
+    </script>
+</body>
+</html>

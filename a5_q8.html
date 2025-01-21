@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Dropdown</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        select {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Dropdown Menu</h1>
+    <label for="category">Category:</label>
+    <select id="category">
+        <option value="fruits">Fruits</option>
+        <option value="vegetables">Vegetables</option>
+    </select>
+    <label for="subcategory">Subcategory:</label>
+    <select id="subcategory"></select>
+
+    <script>
+        const subcategories = {
+            fruits: ['Apple', 'Banana', 'Orange'],
+            vegetables: ['Carrot', 'Broccoli', 'Spinach']
+        };
+
+        document.getElementById('category').addEventListener('change', function () {
+            const subcategory = document.getElementById('subcategory');
+            subcategory.innerHTML = '';
+            subcategories[this.value].forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.toLowerCase();
+                option.textContent = item;
+                subcategory.appendChild(option);
+            });
+        });
+
+        document.getElementById('category').dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>

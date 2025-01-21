@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Preferences</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+        #themeButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        body.light {
+            background-color: white;
+            color: black;
+        }
+        body.dark {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Theme Toggle</h1>
+    <button id="themeButton">Toggle Theme</button>
+
+    <script>
+        const button = document.getElementById('themeButton');
+        const theme = localStorage.getItem('theme') || 'light';
+        document.body.className = theme;
+
+        button.addEventListener('click', () => {
+            const newTheme = document.body.className === 'light' ? 'dark' : 'light';
+            document.body.className = newTheme;
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+</html>

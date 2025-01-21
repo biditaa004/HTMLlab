@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .cart {
+            margin-top: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .cart-item input {
+            width: 50px;
+            margin-left: 10px;
+        }
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Shopping Cart Simulation</h1>
+
+<label for="itemInput">Item Name:</label>
+<input type="text" id="itemInput" placeholder="Enter item name">
+<label for="priceInput">Price:</label>
+<input type="number" id="priceInput" placeholder="Enter item price" min="0" step="0.01">
+<label for="quantityInput">Quantity:</label>
+<input type="number" id="quantityInput" placeholder="Enter quantity" min="1" value="1">
+<button id="addItemBtn">Add to Cart</button>
+
+<div class="cart" id="cart"></div>
+<div class="total" id="totalPrice">Total Price: $0.00</div>
+
+<script>
+// Initialize an empty cart
+let cart = [];
+
+// Function to update the cart display
+function updateCart() {
+    const cartDiv = document.getElementById('cart');
+    cartDiv.innerHTML = ''; // Clear previous items
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        
+        itemDiv.innerHTML = `
+            ${item.name} - $${item.price.toFixed(2)} x 
+            <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+            <button onclick="removeItem(${index})">Remove</button>
+        `;
+        
+        total += item.price * item.quantity; // Calculate total price
+        cartDiv.appendChild(itemDiv);
+    });
+
+    document.getElementById('totalPrice').textContent = `Total Price: $${total.toFixed(2)}`;
+}
+
+// Function to add an item to the cart
+document.getElementById('addItemBtn').onclick = function() {
+    const name = document.getElementById('itemInput').value.trim();
+    const price = parseFloat(document.getElementById('priceInput').value);
+    const quantity = parseInt(document.getElementById('quantityInput').value);
+
+    if (name && !isNaN(price) && quantity > 0) {
+        cart.push({ name, price, quantity });
+        updateCart();
+        
+        // Clear input fields
+        document.getElementById('itemInput').value = '';
+        document.getElementById('priceInput').value = '';
+        document.getElementById('quantityInput').value = '1';
+    } else {
+        alert("Please enter valid item details.");
+    }
+};
+
+// Function to remove an item from the cart
+function removeItem(index) {
+    cart.splice(index, 1); // Remove item at the specified index
+    updateCart();
+}
+
+// Function to update the quantity of an item
+function updateQuantity(index, quantity) {
+    if (quantity > 0) {
+        cart[index].quantity = parseInt(quantity);
+        updateCart();
+    } else {
+        alert("Quantity must be at least 1.");
+    }
+}
+</script>
+
+</body>
+</html>
